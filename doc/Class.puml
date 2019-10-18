@@ -1,0 +1,45 @@
+@startuml
+
+class CmdCalculatorUI {
+}
+interface RpnCalculator{
+public RpnStack calculate(String str)
+public RpnStack getStack()
+}
+abstract class AbstractRpnCalculator{
+ThreadLocal<RpnStack> rpnStack
+}
+RpnCalculator <|-- AbstractRpnCalculator
+class BasicRpnCalculator{
+}
+AbstractRpnCalculator <|-- BasicRpnCalculator
+interface Operator{
+public void operate()
+}
+
+class RpnStack{
+public String toString()
+}
+class Number{
+}
+enum RpnOperator{
+  ADDITION
+  SUBTRACTION
+  MULTIPLICATION
+  DIVISION
+  SQRT
+  UNDO
+  CLEAR
+
+  public RpnOperator valueOf(String op)
+}
+
+class InsufficientParametersException{
+}
+
+
+
+
+
+
+@enduml
