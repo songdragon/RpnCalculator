@@ -1,7 +1,7 @@
 package io.zts.rpn.core.operator.impl;
 
 import io.zts.rpn.core.domain.Operation;
-import io.zts.rpn.core.domain.RpnNumber;
+import io.zts.rpn.core.domain.RpnOperand;
 import io.zts.rpn.core.domain.RpnStack;
 import io.zts.rpn.core.exception.InsufficientParametersException;
 import io.zts.rpn.core.operator.Operator;
@@ -15,12 +15,12 @@ import java.math.BigDecimal;
 public class SqrtOperator implements Operator {
     @Override
     public Operation operate(RpnStack stack) throws InsufficientParametersException {
-        RpnNumber num=stack.pop();
+        RpnOperand num=stack.pop();
         if(num==null){
             throw new InsufficientParametersException(RpnOperator.SQRT,stack.getStackPos());
         }
         double numInDouble=num.getNumber().doubleValue();
-        RpnNumber result=new RpnNumber();
+        RpnOperand result=new RpnOperand();
         result.setNumber(new BigDecimal(Math.sqrt(numInDouble)));
         stack.push(result);
 

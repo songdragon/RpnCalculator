@@ -18,21 +18,21 @@ public class Operation {
     /**
      * keep in order when numbers push into stack
      */
-    private List<RpnNumber> numbers;
+    private List<RpnOperand> numbers;
 
     public Operation(){
 
     }
 
-    public Operation(RpnOperator operator, List<RpnNumber> numbers){
+    public Operation(RpnOperator operator, List<RpnOperand> numbers){
         this.operator=operator.getOperator();
         this.numbers=numbers;
     }
 
-    public Operation(RpnOperator operator, RpnNumber ... numbers){
+    public Operation(RpnOperator operator, RpnOperand... numbers){
         this.operator=operator.getOperator();
         this.numbers=new ArrayList<>();
-        for(RpnNumber num:numbers){
+        for(RpnOperand num:numbers){
             this.numbers.add(num);
         }
     }
@@ -42,7 +42,7 @@ public class Operation {
     }
 
 
-    public List<RpnNumber> getNumbers() {
+    public List<RpnOperand> getNumbers() {
         return numbers;
     }
 

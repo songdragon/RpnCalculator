@@ -1,8 +1,6 @@
 package io.zts.rpn.core.operator;
 
-import io.zts.rpn.core.domain.HistoryOperationStack;
 import io.zts.rpn.core.domain.Operation;
-import io.zts.rpn.core.domain.RpnNumber;
 import io.zts.rpn.core.domain.RpnStack;
 import io.zts.rpn.core.exception.InsufficientParametersException;
 

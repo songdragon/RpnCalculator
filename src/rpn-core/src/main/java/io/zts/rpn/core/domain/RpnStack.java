@@ -10,16 +10,16 @@ import java.util.Stack;
  */
 public class RpnStack {
 
-    protected Stack<RpnNumber> stack=new Stack<>();
+    protected Stack<RpnOperand> stack=new Stack<>();
 
     int stackPos=0;
 
-    public void push(RpnNumber number){
+    public void push(RpnOperand number){
         stack.push(number);
         stackPos++;
     }
 
-    public RpnNumber pop(){
+    public RpnOperand pop(){
         try {
             stackPos++;
             return stack.pop();
@@ -36,7 +36,7 @@ public class RpnStack {
 
     public String toString(){
         StringBuilder displayStrBuilder=new StringBuilder("stack:");
-        for(RpnNumber number: stack){
+        for(RpnOperand number: stack){
             displayStrBuilder.append(" ");
             displayStrBuilder.append(number);
         }
@@ -47,7 +47,7 @@ public class RpnStack {
         return stackPos;
     }
 
-    public Stack<RpnNumber> getStack(){
+    public Stack<RpnOperand> getStack(){
         return stack;
     }
 }

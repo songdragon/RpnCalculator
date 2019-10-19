@@ -35,7 +35,7 @@ public class HistoryOperationStack {
         historyStack.push(operation);
     }
 
-    public void recordOperation(RpnOperator op, RpnNumber ... numbers){
+    public void recordOperation(RpnOperator op, RpnOperand... numbers){
 
     }
 

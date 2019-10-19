@@ -2,10 +2,9 @@ package io.zts.rpn.core.operator;
 
 import io.zts.rpn.core.domain.HistoryOperationStack;
 import io.zts.rpn.core.domain.Operation;
-import io.zts.rpn.core.domain.RpnNumber;
+import io.zts.rpn.core.domain.RpnOperand;
 import io.zts.rpn.core.domain.RpnStack;
 import io.zts.rpn.core.exception.InsufficientParametersException;
-import io.zts.rpn.core.operator.impl.AdditionOperator;
 import io.zts.rpn.core.operator.impl.UndoOperator;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,10 +28,10 @@ public class UndoOperatorTestCase {
     @Test
     public void testUndoOp() throws InsufficientParametersException {
 
-        stack.push(new RpnNumber("3"));
-        stack.push(new RpnNumber("2"));
+        stack.push(new RpnOperand("3"));
+        stack.push(new RpnOperand("2"));
 
-        Operation oldOperation=new Operation(RpnOperator.SQRT,new RpnNumber("123"));
+        Operation oldOperation=new Operation(RpnOperator.SQRT,new RpnOperand("123"));
         historyOperationStack.push(oldOperation);
 
         Operation operation = undoOp.operate(stack);

@@ -8,17 +8,17 @@ import java.math.RoundingMode;
  *
  * @author songdragon@zts.io
  */
-public class RpnNumber {
+public class RpnOperand {
 
     private static final int MAX_DISPLAY_PRECISION=10;
 
     private BigDecimal number;
 
-    public RpnNumber(){
+    public RpnOperand(){
 
     }
 
-    public RpnNumber(String num){
+    public RpnOperand(String num){
         this.number=new BigDecimal(num);
     }
 

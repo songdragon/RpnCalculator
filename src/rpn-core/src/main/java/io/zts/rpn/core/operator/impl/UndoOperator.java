@@ -2,7 +2,7 @@ package io.zts.rpn.core.operator.impl;
 
 import io.zts.rpn.core.domain.HistoryOperationStack;
 import io.zts.rpn.core.domain.Operation;
-import io.zts.rpn.core.domain.RpnNumber;
+import io.zts.rpn.core.domain.RpnOperand;
 import io.zts.rpn.core.domain.RpnStack;
 import io.zts.rpn.core.exception.InsufficientParametersException;
 import io.zts.rpn.core.operator.Operator;
@@ -27,9 +27,9 @@ public class UndoOperator implements Operator {
         }
         else {
             //operations with numbers
-            List<RpnNumber> numbers = operation.getNumbers();
+            List<RpnOperand> numbers = operation.getNumbers();
             if (numbers != null) {
-                for (RpnNumber num : numbers) {
+                for (RpnOperand num : numbers) {
                     stack.push(num);
                 }
             }

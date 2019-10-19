@@ -16,16 +16,16 @@ public class RpnStackTestCase {
 
     @Test
     public void testRpnStackDisplay(){
-        stack.push(new RpnNumber("5"));
+        stack.push(new RpnOperand("5"));
         assertEquals("stack: 5", stack.toString());
     }
 
     @Test
     public void testRpnStackDisplayAfterSomeOp(){
-        stack.push(new RpnNumber("5"));
+        stack.push(new RpnOperand("5"));
         stack.pop();
-        stack.push(new RpnNumber("3"));
-        stack.push(new RpnNumber("13"));
+        stack.push(new RpnOperand("3"));
+        stack.push(new RpnOperand("13"));
         assertEquals("stack: 3 13", stack.toString());
     }
 }

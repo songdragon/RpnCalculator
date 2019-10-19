@@ -1,7 +1,7 @@
 package io.zts.rpn.core.operator;
 
 import io.zts.rpn.core.domain.Operation;
-import io.zts.rpn.core.domain.RpnNumber;
+import io.zts.rpn.core.domain.RpnOperand;
 import io.zts.rpn.core.domain.RpnStack;
 import io.zts.rpn.core.exception.InsufficientParametersException;
 import io.zts.rpn.core.operator.impl.DivisionOperator;
@@ -24,8 +24,8 @@ public class DivisionOperatorTestCase {
     @Test
     public void testDivOp() throws InsufficientParametersException {
 
-        stack.push(new RpnNumber("3"));
-        stack.push(new RpnNumber("2"));
+        stack.push(new RpnOperand("3"));
+        stack.push(new RpnOperand("2"));
         Operation operation = divOp.operate(stack);
         assertEquals("stack: 1.5", stack.toString());
         assertNotNull(operation);
@@ -36,8 +36,8 @@ public class DivisionOperatorTestCase {
     @Test
     public void testInfiniteDivOp() throws InsufficientParametersException {
 
-        stack.push(new RpnNumber("1"));
-        stack.push(new RpnNumber("3"));
+        stack.push(new RpnOperand("1"));
+        stack.push(new RpnOperand("3"));
         Operation operation = divOp.operate(stack);
         assertEquals("stack: 0.3333333333", stack.toString());
         assertNotNull(operation);
@@ -56,7 +56,7 @@ public class DivisionOperatorTestCase {
     @Test(expected = InsufficientParametersException.class)
     public void testMissTwoParameterAddOp() throws InsufficientParametersException {
 
-        stack.push(new RpnNumber("123"));
+        stack.push(new RpnOperand("123"));
         divOp.operate(stack);
 
     }

@@ -9,14 +9,14 @@ public class RpnNumberTestCase {
 
     @Test
     public void testNullNumber(){
-        RpnNumber number=new RpnNumber();
+        RpnOperand number=new RpnOperand();
         assertNull(number.getNumber());
         assertEquals("", number.toString());
     }
 
     @Test
     public void testDisplayNumberNoMoreThan10Decimal(){
-        RpnNumber number=new RpnNumber();
+        RpnOperand number=new RpnOperand();
         number.setNumber(new BigDecimal(3));
         assertEquals("3", number.toString());
         number.setNumber(new BigDecimal("3.1"));
@@ -27,7 +27,7 @@ public class RpnNumberTestCase {
 
     @Test
     public void testDisplayNumberMoreThan10Decimal(){
-        RpnNumber number=new RpnNumber();
+        RpnOperand number=new RpnOperand();
         number.setNumber(new BigDecimal(Math.sqrt(2)));
         assertEquals("1.4142135623",number.toString());
     }

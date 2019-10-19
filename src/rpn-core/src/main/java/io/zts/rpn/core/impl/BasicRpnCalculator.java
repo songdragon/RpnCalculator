@@ -3,7 +3,7 @@ package io.zts.rpn.core.impl;
 import io.zts.rpn.core.RpnCalculator;
 import io.zts.rpn.core.domain.HistoryOperationStack;
 import io.zts.rpn.core.domain.Operation;
-import io.zts.rpn.core.domain.RpnNumber;
+import io.zts.rpn.core.domain.RpnOperand;
 import io.zts.rpn.core.domain.RpnStack;
 import io.zts.rpn.core.exception.InsufficientParametersException;
 import io.zts.rpn.core.operator.RpnOperator;
@@ -39,9 +39,9 @@ public class BasicRpnCalculator implements RpnCalculator {
                 RpnOperator rpnOp = RpnOperator.parseOf(input);
                 switch (rpnOp) {
                     case UNKNOWN:
-                        RpnNumber rpnNumber = new RpnNumber(input);
-                        rpnStack.push(rpnNumber);
-                        Operation operation = new Operation(RpnOperator.PUSH, rpnNumber);
+                        RpnOperand rpnOperand = new RpnOperand(input);
+                        rpnStack.push(rpnOperand);
+                        Operation operation = new Operation(RpnOperator.PUSH, rpnOperand);
                         historyOperationStackThreadLocal.get().push(operation);
                         break;
                     case UNDO:
