@@ -2,6 +2,9 @@
 
 class CmdCalculatorUI {
 }
+
+CmdCalculatorUI *-- RpnCalculator
+
 interface RpnCalculator{
 public RpnStack calculate(String str)
 public RpnStack getStack()
@@ -13,15 +16,24 @@ RpnCalculator <|-- AbstractRpnCalculator
 class BasicRpnCalculator{
 }
 AbstractRpnCalculator <|-- BasicRpnCalculator
+
+
 interface Operator{
 public void operate()
 }
+BasicRpnCalculator -- RpnOperator
+BasicRpnCalculator *-- RpnStack
+BasicRpnCalculator *-- HistoryOperationStack
+
 
 class RpnStack{
 public String toString()
+public RpnNumber pop()
+public void push(RpnNumber number)
 }
-class Number{
+class RpnNumber{
 }
+RpnStack -- RpnNumber
 enum RpnOperator{
   ADDITION
   SUBTRACTION
@@ -33,13 +45,18 @@ enum RpnOperator{
 
   public RpnOperator valueOf(String op)
 }
-
+RpnOperator o-- Operator
 class InsufficientParametersException{
 }
 
+class HistoryOperationStack{
+}
+class Operation {
+   RpnNumber result
+}
 
-
-
-
+Operation o-- Operator
+Operation o-- RpnNumber
+HistoryOperationStack o-- Operation
 
 @enduml
