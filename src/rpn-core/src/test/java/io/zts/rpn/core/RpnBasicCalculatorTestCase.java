@@ -17,7 +17,8 @@ public class RpnBasicCalculatorTestCase {
     @Before
     public void before(){
         //TODO: reset calculator
-        calculator=null;
+        calculator=RpnCalculatorFactory.getBasicInstance();
+        calculator.getRpnStack().clear();
     }
 
     @Test

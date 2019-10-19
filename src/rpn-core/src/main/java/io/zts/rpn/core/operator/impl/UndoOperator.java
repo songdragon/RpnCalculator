@@ -18,10 +18,20 @@ public class UndoOperator implements Operator {
 
     public void recoverStack(RpnStack stack, HistoryOperationStack historyStack){
         Operation operation=historyStack.pop();
-        List<RpnNumber> numbers = operation.getNumbers();
-        if(numbers!=null){
-            for(RpnNumber num:numbers){
-                stack.push(num);
+        if(operation==null){
+            return;
+        }
+        if(operation.getOperator()==null){
+            //numbers are push into stack, just pop it
+
+        }
+        else {
+            //operations with numbers
+            List<RpnNumber> numbers = operation.getNumbers();
+            if (numbers != null) {
+                for (RpnNumber num : numbers) {
+                    stack.push(num);
+                }
             }
         }
     }

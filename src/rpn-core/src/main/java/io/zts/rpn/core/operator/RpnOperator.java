@@ -12,7 +12,8 @@ public enum RpnOperator {
     SQRT(new SqrtOperator(),"sqrt"),
     CLEAR(new ClearOperator(),"clear"),
     UNDO(new UndoOperator(),"undo"),
-    UNKNOWN(null,"")
+    UNKNOWN(null,""),
+    PUSH(null,"")
     ;
 
     private Operator operator;
@@ -27,7 +28,7 @@ public enum RpnOperator {
         return this.operator;
     }
 
-    public RpnOperator parseOf(String op){
+    public static RpnOperator parseOf(String op){
         for(RpnOperator operator: RpnOperator.values()){
             if(operator.opStr.equals(op)){
                 return operator;
