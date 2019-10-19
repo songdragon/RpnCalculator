@@ -19,6 +19,7 @@ public class BasicRpnCalculator implements RpnCalculator {
 
     protected ThreadLocal<RpnStack> rpnStackThreadLocal = new ThreadLocal<>();
     protected ThreadLocal<HistoryOperationStack> historyOperationStackThreadLocal = new ThreadLocal<>();
+    protected ThreadLocal<Integer> positionThreadLocal=new ThreadLocal<>();
 
     public BasicRpnCalculator() {
         this.rpnStackThreadLocal.set(new RpnStack());
@@ -33,26 +34,30 @@ public class BasicRpnCalculator implements RpnCalculator {
 
         String[] inputs = str.split(" ");
         RpnStack rpnStack = rpnStackThreadLocal.get();
-        for (String input : inputs) {
-            RpnOperator rpnOp = RpnOperator.parseOf(input);
-            switch (rpnOp) {
-                case UNKNOWN:
-                    RpnNumber rpnNumber=new RpnNumber(input);
-                    rpnStack.push(rpnNumber);
-                    Operation operation=new Operation(RpnOperator.PUSH,rpnNumber);
-                    historyOperationStackThreadLocal.get().push(operation);
-                    break;
-                case UNDO:
-                    rpnOp.getOperator().operate(rpnStack);
-                    ((UndoOperator)rpnOp.getOperator()).recoverStack(rpnStack,historyOperationStackThreadLocal.get());
-                    break;
-                default:
-                    Operation opeartion = rpnOp.getOperator().operate(rpnStack);
-                    historyOperationStackThreadLocal.get().push(opeartion);
+        try {
+            for (String input : inputs) {
+                RpnOperator rpnOp = RpnOperator.parseOf(input);
+                switch (rpnOp) {
+                    case UNKNOWN:
+                        RpnNumber rpnNumber = new RpnNumber(input);
+                        rpnStack.push(rpnNumber);
+                        Operation operation = new Operation(RpnOperator.PUSH, rpnNumber);
+                        historyOperationStackThreadLocal.get().push(operation);
+                        break;
+                    case UNDO:
+                        rpnOp.getOperator().operate(rpnStack);
+                        ((UndoOperator) rpnOp.getOperator()).recoverStack(rpnStack, historyOperationStackThreadLocal.get());
+                        break;
+                    default:
+                        Operation op = rpnOp.getOperator().operate(rpnStack);
+                        historyOperationStackThreadLocal.get().push(op);
 
+                }
             }
         }
-
+        catch (InsufficientParametersException ipe){
+            throw ipe;
+        }
         return rpnStack;
     }
 

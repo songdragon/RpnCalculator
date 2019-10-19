@@ -96,6 +96,7 @@ public class RpnBasicCalculatorTestCase {
         }
         catch (InsufficientParametersException ipe){
             assertEquals("stack: 11",calculator.getRpnStack().toString());
+            assertEquals(15,ipe.getPosition());
         }
     }
 }

@@ -12,12 +12,16 @@ public class RpnStack {
 
     protected Stack<RpnNumber> stack=new Stack<>();
 
+    int stackPos=0;
+
     public void push(RpnNumber number){
         stack.push(number);
+        stackPos++;
     }
 
     public RpnNumber pop(){
         try {
+            stackPos++;
             return stack.pop();
         }
         catch (EmptyStackException e){
@@ -27,6 +31,7 @@ public class RpnStack {
 
     public void clear(){
         stack.clear();
+        stackPos=0;
     }
 
     public String toString(){
@@ -36,6 +41,10 @@ public class RpnStack {
             displayStrBuilder.append(number);
         }
         return displayStrBuilder.toString();
+    }
+
+    public int getStackPos(){
+        return stackPos;
     }
 
     public Stack<RpnNumber> getStack(){

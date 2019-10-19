@@ -17,7 +17,7 @@ public class SqrtOperator implements Operator {
     public Operation operate(RpnStack stack) throws InsufficientParametersException {
         RpnNumber num=stack.pop();
         if(num==null){
-            throw new InsufficientParametersException();
+            throw new InsufficientParametersException(RpnOperator.SQRT,stack.getStackPos());
         }
         double numInDouble=num.getNumber().doubleValue();
         RpnNumber result=new RpnNumber();

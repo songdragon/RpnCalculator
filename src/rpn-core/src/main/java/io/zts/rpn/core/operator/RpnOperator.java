@@ -28,6 +28,10 @@ public enum RpnOperator {
         return this.operator;
     }
 
+    public String getOpStr(){
+        return opStr;
+    }
+
     public static RpnOperator parseOf(String op){
         for(RpnOperator operator: RpnOperator.values()){
             if(operator.opStr.equals(op)){
@@ -36,5 +40,6 @@ public enum RpnOperator {
         }
         return UNKNOWN;
     }
+
 
 }

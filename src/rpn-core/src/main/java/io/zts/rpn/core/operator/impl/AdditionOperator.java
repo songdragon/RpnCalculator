@@ -21,13 +21,16 @@ public class AdditionOperator implements Operator {
         RpnNumber number1=stack.pop();
         RpnNumber number2=stack.pop();
         if(number1==null || number2==null){
+            int toSub=0;
             if(number2!=null){
                 stack.push(number2);
+                toSub++;
             }
             if(number1!=null){
+                toSub++;
                 stack.push(number1);
             }
-            throw new InsufficientParametersException();
+            throw new InsufficientParametersException(RpnOperator.ADDITION,stack.getStackPos()-toSub);
         }
 
         RpnNumber sum=new RpnNumber();
