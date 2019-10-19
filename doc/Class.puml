@@ -34,18 +34,7 @@ public void push(RpnNumber number)
 class RpnNumber{
 }
 RpnStack -- RpnNumber
-enum RpnOperator{
-  ADDITION
-  SUBTRACTION
-  MULTIPLICATION
-  DIVISION
-  SQRT
-  UNDO
-  CLEAR
 
-  public RpnOperator valueOf(String op)
-}
-RpnOperator o-- Operator
 class InsufficientParametersException{
 }
 
@@ -58,5 +47,23 @@ class Operation {
 Operation o-- Operator
 Operation o-- RpnNumber
 HistoryOperationStack o-- Operation
+
+class AbstractRpnOperator{
+}
+
+Operator <|-- AbstractRpnOperator
+
+enum RpnOperator{
+  ADDITION
+  SUBTRACTION
+  MULTIPLICATION
+  DIVISION
+  SQRT
+  UNDO
+  CLEAR
+
+  public RpnOperator valueOf(String op)
+}
+RpnOperator o-- Operator
 
 @enduml

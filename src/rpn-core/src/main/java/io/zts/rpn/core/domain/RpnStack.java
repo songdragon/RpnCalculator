@@ -1,5 +1,6 @@
 package io.zts.rpn.core.domain;
 
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 /**
@@ -16,7 +17,12 @@ public class RpnStack {
     }
 
     public RpnNumber pop(){
-        return stack.pop();
+        try {
+            return stack.pop();
+        }
+        catch (EmptyStackException e){
+            return null;
+        }
     }
 
     public void clear(){
@@ -30,5 +36,9 @@ public class RpnStack {
             displayStrBuilder.append(number);
         }
         return displayStrBuilder.toString();
+    }
+
+    public Stack<RpnNumber> getStack(){
+        return stack;
     }
 }
