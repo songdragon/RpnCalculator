@@ -11,5 +11,12 @@
 
     <artifactId>cmd-calculator</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>io.zts.calculator</groupId>
+            <artifactId>rpn-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
