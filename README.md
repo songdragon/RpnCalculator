@@ -27,3 +27,6 @@ Please refer to http://plantuml.com/zh/running .
   2. rpn-calculator.zip will be generated in src/cmd-calculator/target.
   3. unzip rpn-calculator.zip and then execute run.bat.
 
+* Note     
+  Please confirm JDK and maven have been installed.
+
