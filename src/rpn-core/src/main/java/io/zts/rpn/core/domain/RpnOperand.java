@@ -1,5 +1,7 @@
 package io.zts.rpn.core.domain;
 
+import io.zts.rpn.core.exception.IllegalOperandException;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -19,7 +21,12 @@ public class RpnOperand {
     }
 
     public RpnOperand(String num){
-        this.number=new BigDecimal(num);
+        try {
+            this.number = new BigDecimal(num);
+        }
+        catch (NumberFormatException e){
+            throw new IllegalOperandException(num);
+        }
     }
 
     public BigDecimal getNumber() {

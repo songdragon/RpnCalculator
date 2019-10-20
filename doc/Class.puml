@@ -37,6 +37,8 @@ RpnStack -- RpnNumber
 
 class InsufficientParametersException{
 }
+class IllegalOperandException{
+}
 
 class HistoryOperationStack{
 }

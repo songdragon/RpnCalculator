@@ -2,6 +2,7 @@ package io.zts.rpn.calculator.shell;
 
 import io.zts.rpn.core.RpnCalculator;
 import io.zts.rpn.core.RpnCalculatorFactory;
+import io.zts.rpn.core.exception.IllegalOperandException;
 import io.zts.rpn.core.exception.InsufficientParametersException;
 
 import java.util.Scanner;
@@ -23,10 +24,11 @@ public class ShellMain {
                 calculator.calculate(input);
                 System.out.println(calculator.getRpnStack());
 
-            } catch (InsufficientParametersException e) {
+            } catch (InsufficientParametersException | IllegalOperandException e) {
                 System.out.println(e);
                 System.out.println(calculator.getRpnStack());
             }
+
         }
     }
 }
