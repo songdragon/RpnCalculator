@@ -1,0 +1,1 @@
+cd src && mvn clean package
